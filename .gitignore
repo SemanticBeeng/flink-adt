@@ -1,4 +1,8 @@
+.idea
+.bsp/
+project/.boot/
+project/.sbtboot/
 project/project/*
 project/target/*
 target/
-.idea
+

@@ -15,15 +15,19 @@ bintrayVcsUrl := Some("git@github.com:findify/flink-adt.git")
 
 //publishTo := sonatypePublishToBundle.value
 
-lazy val flinkVersion = "1.9.0"
+lazy val flinkVersion = "1.11.2"
 
 libraryDependencies ++= Seq(
-  "com.propensive"                   %% "magnolia"                   % "0.12.0",
+  "com.propensive"                   %% "magnolia"                   % "0.17.0",
   "org.apache.flink"          %% "flink-scala"                % flinkVersion % "provided",
   "org.apache.flink"          %% "flink-streaming-scala"      % flinkVersion % "provided",
   "org.scalatest" %% "scalatest" % "3.0.8" % "test",
-  "org.typelevel" %% "cats-core" % "1.6.1"
+  "org.typelevel" %% "cats-core" % "2.3.0"
 )
+
+// Did this to avoid class loading error for macro generated classes
+// Test / classLoaderLayeringStrategy := ClassLoaderLayeringStrategy.Flat
+Test / fork := true
 
 pomExtra := (
   <scm>
